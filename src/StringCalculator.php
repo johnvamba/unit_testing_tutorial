@@ -1,8 +1,17 @@
 <?php
 
 class StringCalculator{
-	public static function add(string $string){
-
+	public static function add(string $string=''){
+		$ret = 0;
+		$numbers = explode(',', $string);
+		if(count($numbers)>2){
+			throw new InvalidArgumentException("Array must contain 2 items or less separated by comma");
+		} else {
+			foreach ($numbers as $key => $value) {
+				$ret += (int) $value;
+			}
+		}
+		return $ret;
 	}
 }
 
